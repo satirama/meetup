@@ -29,7 +29,7 @@ for(c=0; c<brickColumnCount; c++) {
     }
 }
 
-//funciones para sabes si se presionó alguna tecla
+//funciones para saber si se presionó alguna tecla
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
 
@@ -140,52 +140,11 @@ function draw() {
     drawLives();
     collisionDetection();
     
-    //función para el rebote horizontal de la pelota 
-    if(x + dx > canvas.width-ballRadius || x + dx < ballRadius) {
-        dx = -dx;
-    }
-
-    //función para el rebote vertical de la pelota en el margen superior
-    if(y + dy < ballRadius) {
-        dy = -dy;
-    }
-    //parte de la función que realiza el rebote de la pelota en la raqueta
-    else if(y + dy > canvas.height-ballRadius) {
-        //si golpea la raqueta rebota
-        if(x > paddleX && x < paddleX + paddleWidth) {
-            dy = -dy;
-        }
-        //si no...
-        else {
-            lives--;//se descuenta una vida
-            if(!lives) {//al llegar a cero se lanza el mensaje Game Over y se reinicia el juego
-                alert("GAME OVER");
-                document.location.reload();
-            }
-            else {//si todavía hay vidas... 
-                //la pelota se reposiciona en el centro
-                x = canvas.width/2;
-                y = canvas.height-30;
-                //se incrementa la velocidad
-                dx = 3.3;
-                dy = -3.3;
-                //se reposiciona la raqueta en el centro
-                paddleX = (canvas.width-paddleWidth)/2; 
-            }
-        }
-    }
-    
-    //movimiento de la raqueta cuenta con límites para que no se salga del canvas
-    if(rightPressed && paddleX < canvas.width-paddleWidth) {
-        paddleX += 7;
-    }
-    else if(leftPressed && paddleX > 0) {
-        paddleX -= 7;
-    }
-    
     //movimiento de la pelota
-    x += dx;
-    y += dy;
+
+
+    
+
     requestAnimationFrame(draw);
 }
 
