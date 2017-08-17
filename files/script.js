@@ -140,12 +140,32 @@ function draw() {
     drawLives();
     collisionDetection();
     
-    //movimiento de la pelota
+    //movimiento de la pelota (insertar código del ejercicio aquí)
 
 
     
+    
+    
+    
+    
+    
+    
+    
 
+    //movimiento de la raqueta cuenta con límites para que no se salga del canvas
+    if(rightPressed && paddleX < canvas.width-paddleWidth) {
+        paddleX += 7;
+    }
+    else if(leftPressed && paddleX > 0) {
+        paddleX -= 7;
+    }
+    
+    //actualización de la posición de la pelota
+    x += dx;
+    y += dy;
+    
     requestAnimationFrame(draw);
+
 }
 
 draw();
